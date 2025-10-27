@@ -17,9 +17,9 @@ local LogLevels = {
 }
 
 local LogPrint = {
-    ["1"] = info;
-    ["2"] = warn;
-    ["3"] = error;
+    ["1"] = print;
+    ["2"] = info;
+    ["3"] = warn;
 }
 
 function Logger.Clear()
