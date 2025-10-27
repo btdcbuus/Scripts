@@ -49,7 +49,7 @@ function Logger.Log(Data, Level)
 
     Level = Level or 1;
     local LevelOutput = "[" .. LogLevels[tostring(Level)] .. "] ";
-    local Time2 = os.date("%H:%M:%S")
+    local Time2 = os.date("%H-%M-%S")
     local Output = "[" .. Time2 .. "] " .. LevelOutput .. Data;
 
     if LoggerPrint then
@@ -58,7 +58,6 @@ function Logger.Log(Data, Level)
 
     if not isfile(LogFolder .. LogFile) then
         writefile(LogFolder .. LogFile, "");
-        print("Creating file with: " .. LogFolder .. LogFile);
     end
 
     appendfile(LogFolder .. LogFile, Output .. "\n");
