@@ -4,7 +4,7 @@ local SaveManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.
 local InterfaceManager = loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/ActualMasterOogway/Fluent-Renewed/master/Addons/InterfaceManager.luau"))()
 
 Logger.EnablePrint(true);
-Logger.SetLogFolder("119048529960596");
+Logger.SetLogFolder("Restaurant Tycoon 3");
 Logger.Log("Script Started...\n", Logger.Info());
 
 local Players = cloneref(game:GetService("Players"));
