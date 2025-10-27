@@ -3,7 +3,7 @@ repeat
 until game:IsLoaded()
 
 local PlaceId = tostring(game.PlaceId);
-local Logger = loadstring(game:HttpGet("https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Logger.luau"))();
+local Logger = loadstring(game:HttpGet("https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Misc/Logger.luau"))();
 
 local Supported =  {
     [""] = "";
