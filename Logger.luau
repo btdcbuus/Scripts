@@ -16,6 +16,8 @@ local LogLevels = {
     ["3"] = "ERROR";
 }
 
+
+
 local LogPrint = {
     ["1"] = print;
     ["2"] = info;
