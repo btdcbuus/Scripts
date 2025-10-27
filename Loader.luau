@@ -6,7 +6,8 @@ local PlaceId = tostring(game.PlaceId);
 local Logger = loadstring(game:HttpGet("https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Misc/Logger.luau"))();
 
 local Supported =  {
-    [""] = "";
+    ["111989938562194"] = "https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Games/111989938562194.luau";
+    ["119048529960596"] = "https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Games/119048529960596.luau";
 }
 
 Logger.EnablePrint(true);
