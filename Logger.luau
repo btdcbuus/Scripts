@@ -1,18 +1,25 @@
 local Logger = {};
 
 local Date = os.date("%Y-%m-%d");
+local Time = os.date("%H:%M:%S");
 local JobId = game.JobId;
 local PlaceId = game.PlaceId;
 local PlaceName = cloneref(game:GetService("MarketplaceService")):GetProductInfo(PlaceId).Name;
 
 local LogFolder = "Logger";
-local LogFile = "/" .. Date .. " - " .. PlaceName .. " - " .. JobId .. ".txt";
+local LogFile = "/" .. Date .. " - " .. " - " .. Time .. PlaceName .. ".txt";
 local LoggerPrint = true;
 
 local LogLevels = {
     ["1"] = "INFO";
     ["2"] = "WARNING";
     ["3"] = "ERROR";
+}
+
+local LogPrint = {
+    ["1"] = info;
+    ["2"] = warn;
+    ["3"] = error;
 }
 
 function Logger.Clear()
@@ -42,22 +49,13 @@ function Logger.Log(Data, Level)
 
     Level = Level or 1;
     local LevelOutput = "[" .. LogLevels[tostring(Level)] .. "] ";
-    local Time = os.date("%H:%M:%S");
     local Output = "[" .. Time .. "] " .. LevelOutput .. Data .. "\n";
 
     if LoggerPrint then
-        print(Output);
+        LogPrint[tostring(Level)](Output);
     end
 
     appendfile(LogFolder .. LogFile, Output);
-end
-
-function Logger.SetLogFile(File)
-    LogFile = "/" .. File .. " - " .. Date .. " - " .. PlaceName .. " - " .. JobId .. ".txt";
-    
-    if not isfile(LogFolder .. LogFile) then
-        writefile(LogFolder .. LogFile, "");
-    end
 end
 
 function Logger.SetLogFolder(Folder)
