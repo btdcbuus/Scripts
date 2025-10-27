@@ -3,10 +3,9 @@ repeat
 until game:IsLoaded()
 
 local PlaceId = tostring(game.PlaceId);
-local Logger = loadstring(game:HttpGet(""))();
+local Logger = loadstring(game:HttpGet("https://raw.githubusercontent.com/btdcbuus/Scripts/refs/heads/main/Logger.luau"))();
 
 Logger.SetLogFolder("Loader");
-Logger.SetLogFile("Loader");
 
 local Supported =  {
     [""] = "";

@@ -1,58 +1,53 @@
-local Logger = {};
+local Logger = {}
 
-local Date = os.date("%Y-%m-%d");
-local JobId = game.JobId;
-local PlaceId = game.PlaceId;
-local PlaceName = game:GetService("MarketplaceService"):GetProductInfo(PlaceId).Name;
+local Date = os.date("%Y-%m-%d")
+local JobId = game.JobId
+local PlaceId = game.PlaceId
+local PlaceName = cloneref(game:GetService("MarketplaceService")):GetProductInfo(PlaceId).Name
 
-local LogFile = "/" + Date + " - " + PlaceName + " - " + JobId + ".txt";
-local LogFolder = "Logger";
+local LogFolder = "Logger"
+local LogFile = "/" .. Date .. " - " .. PlaceName .. " - " .. JobId .. ".txt"
 
 local LogLevels = {
-    ["1"] = "INFO";
-    ["2"] = "WARNING";
-    ["3"] = "ERROR";
-};
+    ["1"] = "INFO",
+    ["2"] = "WARNING",
+    ["3"] = "ERROR",
+}
 
 function Logger.Clear()
-    writefile(LogFolder + LogFile, "");
+    writefile(LogFolder .. LogFile, "")
 end
 
 function Logger.DeleteLogs()
-    delfolder(LogFolder);
+    delfolder(LogFolder)
 end
 
 function Logger.Log(Data, Level)
     if not isfolder(LogFolder) then
-        makefolder(LogFolder);
+        makefolder(LogFolder)
     end
 
-    if not Level then
-        Level = 1;
-    end
+    Level = Level or 1
+    local LevelOutput = "[" .. LogLevels[tostring(Level)] .. "] "
+    local Time = os.date("%H:%M:%S")
+    local Output = "[" .. Time .. "] " .. LevelOutput .. Data .. "\n"
 
-    local LevelOutput = "[" + LogLevels[tostring(Level)] + "] ";
-    local Time = os.date("%H:%M:%S");
-    local Output = "[" + Time + "] " + LevelOutput + Data + "\n";
-
-    appendfile(LogFolder + LogFile, Output);
+    appendfile(LogFolder .. LogFile, Output)
 end
 
 function Logger.SetLogFile(File)
-    if isfile(File) then
-        writefile(LogFolder + File, "");
+    LogFile = "/" .. File .. " - " .. Date .. " - " .. PlaceName .. " - " .. JobId .. ".txt"
+    
+    if not isfile(LogFolder .. LogFile) then
+        writefile(LogFolder .. LogFile, "")
     end
-
-    LogFile = "/" + File + ".txt";
-    LogFile = "/"  + File + " - " + Date + " - " + PlaceName + " - " + JobId + ".txt"
 end
 
 function Logger.SetLogFolder(Folder)
+    LogFolder = Folder
     if not isfolder(Folder) then
-        makefolder(Folder);
+        makefolder(Folder)
     end
-
-    LogFolder = Folder;
 end
 
-return Logger;
+return Logger
