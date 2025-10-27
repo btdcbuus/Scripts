@@ -11,7 +11,4 @@ local Players = cloneref(game:GetService("Players"));
 local ReplicatedStorage = cloneref(game:GetService("ReplicatedStorage"));
 local Workspace = cloneref(game:GetService("Workspace"));
 
-print(Players);
-
-
 Logger.Log("Script Exited...");
