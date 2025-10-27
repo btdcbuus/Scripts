@@ -1,7 +1,7 @@
 local Logger = {};
 
 local Date = os.date("%Y-%m-%d");
-local Time = os.date("%H:%M:%S");
+local Time = os.date("%H-%M-%S");
 local JobId = game.JobId;
 local PlaceId = game.PlaceId;
 local PlaceName = game:GetService("MarketplaceService"):GetProductInfo(PlaceId).Name;
