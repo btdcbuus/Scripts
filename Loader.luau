@@ -14,5 +14,5 @@ local Supported =  {
 if (Supported[PlaceId]) then
     loadstring(Supported[PlaceId])();
 else
-
+    Logger.Log(Logger.Error(), "Game is not Supported!");
 end

@@ -7,6 +7,7 @@ local PlaceName = cloneref(game:GetService("MarketplaceService")):GetProductInfo
 
 local LogFolder = "Logger";
 local LogFile = "/" .. Date .. " - " .. PlaceName .. " - " .. JobId .. ".txt";
+local LoggerPrint = true;
 
 local LogLevels = {
     ["1"] = "INFO";
@@ -20,6 +21,10 @@ end
 
 function Logger.DeleteLogs()
     delfolder(LogFolder);
+end
+
+function Logger.EnablePrint(Bool)
+    LoggerPrint = Bool;
 end
 
 function Logger.Error() 
@@ -39,6 +44,10 @@ function Logger.Log(Data, Level)
     local LevelOutput = "[" .. LogLevels[tostring(Level)] .. "] ";
     local Time = os.date("%H:%M:%S");
     local Output = "[" .. Time .. "] " .. LevelOutput .. Data .. "\n";
+
+    if LoggerPrint then
+        print(Output);
+    end
 
     appendfile(LogFolder .. LogFile, Output);
 end
